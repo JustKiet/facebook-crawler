@@ -1,6 +1,10 @@
 from facebook_crawler.llm_processing import FacebookPostAnalyst
 from facebook_crawler.llm_processing import Post
 import json
+import os
+from Secret.secret import OpenAIKey
+
+os.environ["OPENAI_API_KEY"] = OpenAIKey()
 
 output = []
 

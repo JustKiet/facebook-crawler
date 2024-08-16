@@ -9,15 +9,14 @@ from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import JsonOutputParser, StrOutputParser
 from langchain_core.prompts import PromptTemplate
 from langchain_core.pydantic_v1 import BaseModel, Field
-from Secret.secret import OpenAIKey
 
 from facebook_crawler.pydantic_objects import FacebookPost, PostComment, ReplyComment 
 from facebook_crawler.classes import Post   
 
 def FacebookPostAnalyst(post: Post):
-    api_key = OpenAIKey()
 
-    model = ChatOpenAI(model="gpt-4o-mini")
+    model = ChatOpenAI(model="gpt-4o-mini",
+                       api_key=os.environ["OPENAI_API_KEY"],)
 
     parser = JsonOutputParser(pydantic_object=FacebookPost)
 
