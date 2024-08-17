@@ -22,19 +22,18 @@ def FacebookPostAnalyst(post: Post):
 
     prompt = PromptTemplate(
         template="""You are a Facebook Data Analyst. You are trying to retrieve related information 
-        from a pre-processed Facebook post in JSON format.\n
+        from a pre-processed Vietnamese Facebook post in JSON format.\n
         --------------------------------\n
         IMPORTANT NOTES - MUST FOLLOW:\n
-        - In the "content" field, each parts of the post will be SEPERATED by ||. They will be called as ELEMENTS. This field contains everything related to the post (Group name(if it is a group post), 
-        post author, post caption and alot of gibberish).\n
-        - The post_type can be either a "group" or a "generic" post:\n
-        + If it is a "group" post, THE FIRST ELEMENT from the "content" field WILL ALWAYS BE THE GROUP NAME and the SECOND ELEMENT WILL ALWAYS BE THE POST AUTHOR.\n
-        + If it is a "generic" post, THE FIRST ELEMENT from the "content" field WILL ALWAYS BE THE POST AUTHOR.\n
-        - The "content" field could contains hints to whether the post has attachments or not (timestamps, links), be aware.\n
+        - In the "content" field, each parts of the post will be SEPERATED by ||. They will be called as ELEMENTS. This field 
+        contains the main caption of the posts and alot of gibberish. You need to extract the plausible caption from this field.\n
+        - The "content" field could contains hints to whether the post has media content or not (timestamps, links, image caption), figure out if the post has any.\n
         - In the "reaction" field, there should be 3 SEPERATE FIELDS which in order, should be "likes", 
         "comments", and "shares".\n
         - In the "comments" field, each comment should have the following fields: "author", "content" & "likes". 
         Be aware that some comments might be replies to other comments. Try to identify them accordingly.\n
+        - The "group_name" field will contain the name of the group if the post is a group post.\n
+        - The "post_author" field will contain the author of the post.\n
         --------------------------------\n
         Here is the post:\n
         --------------------------------\n
