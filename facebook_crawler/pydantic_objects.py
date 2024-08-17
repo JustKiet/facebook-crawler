@@ -18,8 +18,8 @@ class FacebookPost(BaseModel):
     postGroup: str = Field(description="The group name if the post is a group post. Is pre-given in the json object")
     postAuthor: str = Field(description="The author of the post. Is pre-given in the json object")
     postCaption: str = Field(description="""The caption of the post. CHOOSE ONLY ONE HIGHLY PLAUSIBLE ELEMENT FROM THE 'content' FIELD. BE AWARE OF VERY LONG CAPTIONS. 
-                             THERE SHOULD NOT BE ANY "||" CHARACTER IN THE CAPTION.""")
-    postMediaContent: str = Field(description="""Possible media contents related to the post. Can be Video/Image/None. 
+                             THERE SHOULD NOT BE ANY "||" CHARACTER IN THE CAPTION (ALTHOUGH THERE COULD BE EXCEPTIONS)""")
+    postMediaContent: str = Field(description="""Possible media contents related to the post. Can be Video/Image/Yes (undefinable)/None. 
                                  The "content" field could contains hints to whether the post has media contents or not (timestamps = videos, links/image caption = images), be aware.""")
     postLikesCount: int = Field(description="The number of likes the post has.")
     postCommentsCount: int = Field(description="The number of comments the post has.")
